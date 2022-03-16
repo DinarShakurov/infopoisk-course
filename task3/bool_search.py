@@ -90,7 +90,6 @@ def bool_search():
             second = stack.pop()
             first = stack.pop()
             stack.append(calculate(first, second, el))
-    print(rpn)
     return stack.pop()
 
 
