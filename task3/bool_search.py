@@ -94,9 +94,10 @@ def bool_search():
     return stack.pop()
 
 
+# reverse polish notation
 if __name__ == '__main__':
     index = build_index('index.txt')
     b_s = 'zaman | armada'
     bool_search_str = handle_bool_search_str(b_s)
     rpn = build_rpn(bool_search_str)
-    result = bool_search()
+    answer = bool_search()
