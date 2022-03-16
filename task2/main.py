@@ -11,7 +11,9 @@ from nltk.corpus import stopwords, wordnet
 
 nltk.download('wordnet')
 nltk.download('stopwords')
-
+nltk.download('punkt')
+nltk.download('averaged_perceptron_tagger')
+nltk.download('omw-1.4')
 
 def get_wordnet_pos(word):
     tag = nltk.pos_tag([word])[0][1][0].upper()
@@ -75,8 +77,8 @@ if __name__ == '__main__':
     for it in os.walk("../downloaded_html/"):
         list.extend(it)
     list = list[2]
-    token_dir_path = os.path.join('.', 'tokens')
-    lemmas_dir_path = os.path.join('.', 'lemmas')
+    token_dir_path = os.path.join('..', 'tokens')
+    lemmas_dir_path = os.path.join('..', 'lemmas')
     Path(token_dir_path).mkdir(exist_ok=True)
     Path(lemmas_dir_path).mkdir(exist_ok=True)
     for filepath in list:
