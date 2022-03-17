@@ -63,7 +63,7 @@ def build_rpn(bs: list) -> list:
 
 
 def calculate(first, second, el):
-    operator = set().intersection if el == AND else set().union
+    operator = set.intersection if el == AND else set.union
     if type(first) == str and type(second) == str:
         first_list = index.setdefault(first, set())
         second_list = index.setdefault(second, set())
