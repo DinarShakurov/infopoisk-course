@@ -77,8 +77,8 @@ if __name__ == '__main__':
     for it in os.walk("../downloaded_html/"):
         list.extend(it)
     list = list[2]
-    token_dir_path = os.path.join('..', 'tokens')
-    lemmas_dir_path = os.path.join('..', 'lemmas')
+    token_dir_path = os.path.join('.', 'tokens')
+    lemmas_dir_path = os.path.join('.', 'lemmas')
     Path(token_dir_path).mkdir(exist_ok=True)
     Path(lemmas_dir_path).mkdir(exist_ok=True)
     for filepath in list:
