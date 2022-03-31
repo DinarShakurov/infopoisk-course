@@ -84,7 +84,7 @@ def calculate(first, second, el, index):
 
 
 def bool_search(b_s):
-    index = build_index(join('.', 'index.txt'))
+    index = build_index(join('..', 'task3', 'index.txt'))
     bool_search_str = handle_bool_search_str(b_s)
     rpn = build_rpn(bool_search_str)
     stack = []
