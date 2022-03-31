@@ -44,12 +44,13 @@ def read_docs_tf_idf() -> dict:
 def lemmatize_query(query: str) -> list:
     tokens = TreebankWordTokenizer().tokenize(query)
     eng_stopwords = stopwords.words('english')
-    tokens = [tkn.lower() for tkn in tokens if tkn.lower() not in eng_stopwords]
+    tokens = list(map(str.lower, tokens))
     eng_letters = re.compile("^[a-z]+$")
     tokens = [word for word in tokens if eng_letters.match(word)]
 
     lemmatizer = WordNetLemmatizer()
     lemmas = [lemmatizer.lemmatize(tkn, get_wordnet_pos(tkn)) for tkn in tokens]
+    lemmas = [lemma for lemma in lemmas if lemma not in eng_stopwords]
     return lemmas
 
 
@@ -109,4 +110,4 @@ def vector_search(query: str) -> list:
 
 
 if __name__ == '__main__':
-    print(vector_search('online'))
+    print(vector_search('Online'))
