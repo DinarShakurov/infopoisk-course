@@ -105,7 +105,7 @@ def vector_search(query: str) -> list:
 
     docs_vector = sorted(docs_vector, key=lambda d: d[2], reverse=True)
 
-    return [[d[0], d[2]] for d in docs_vector]
+    return [[d[0], d[2]] for d in docs_vector]  # ['document', Cosine similarity]
 
 
 if __name__ == '__main__':
