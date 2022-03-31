@@ -1,3 +1,6 @@
+from os.path import join
+
+
 OR = '|'
 AND = '&'
 BRACKET_OPEN = '('
@@ -62,7 +65,7 @@ def build_rpn(bs: list) -> list:
                     break
 
 
-def calculate(first, second, el):
+def calculate(first, second, el, index):
     operator = set.intersection if el == AND else set.union
     if type(first) == str and type(second) == str:
         first_list = index.setdefault(first, set())
@@ -80,7 +83,10 @@ def calculate(first, second, el):
         raise Exception
 
 
-def bool_search():
+def bool_search(b_s):
+    index = build_index(join('.', 'index.txt'))
+    bool_search_str = handle_bool_search_str(b_s)
+    rpn = build_rpn(bool_search_str)
     stack = []
     while rpn:
         el = rpn.pop(0)
@@ -89,14 +95,15 @@ def bool_search():
         else:
             second = stack.pop()
             first = stack.pop()
-            stack.append(calculate(first, second, el))
-    return stack.pop()
+            stack.append(calculate(first, second, el, index))
+    result = stack.pop()
+    if type(result) == str:
+        return index.get(result)
+    else:
+        return result
 
 
 # reverse polish notation
 if __name__ == '__main__':
-    index = build_index('index.txt')
-    b_s = 'zaman | armada'
-    bool_search_str = handle_bool_search_str(b_s)
-    rpn = build_rpn(bool_search_str)
-    answer = bool_search()
+    answer = bool_search('zaman | armada')
+    print(answer)
