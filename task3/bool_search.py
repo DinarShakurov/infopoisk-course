@@ -98,12 +98,16 @@ def bool_search(b_s):
             stack.append(calculate(first, second, el, index))
     result = stack.pop()
     if type(result) == str:
-        return index.get(result)
+        response = index.get(result)
+        if response:
+            return response
+        else:
+            return {}
     else:
         return result
 
 
 # reverse polish notation
 if __name__ == '__main__':
-    answer = bool_search('zaman | armada')
+    answer = bool_search('onlinee')
     print(answer)

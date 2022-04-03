@@ -74,6 +74,8 @@ def vector_search(query: str) -> list:
     unique_lemmas = set(query_lemmas)
     founded_docs = bool_search(" | ".join(query_lemmas))
     lemmas_idf: dict = dict()
+    if not founded_docs:
+        return []
     for doc in founded_docs:
         unique_lemmas.update(set(td_idf.get(doc).keys()))
 
